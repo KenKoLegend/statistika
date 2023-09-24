@@ -10,22 +10,41 @@
         <link rel="stylesheet" href="{% static "style.css" %}">
     </head>
     <body>
-        <h1>Zellen aus Google Sheets</h1>
+        <div class="container">
+        <h1>Handover Statistiken BER0001</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Arbeitsblatt</th>
-                    <th>Summe für 011</th>
+                    <th>Tag</th>
+                    <th>Meeting</th>
+                    <th>Interview</th>
+                    <th>Event</th>
+                    <th>Social</th>
+                    <th>Vendor</th>
+                    <th>Press</th>
+                    <th>VIP</th>
                 </tr>
             </thead>
             <tbody>
-                {% for eintrag in sum %}
-                <tr>
-                    <td>{{ eintrag.Arbeitsblatt }}</td>
-                    <td>{{ eintrag.Summe_O11 }}</td>
-                </tr>
+                <tr>                        
+                {% for eintrag in sum %}   
+                <td>
+                    {{ eintrag.Arbeitsblatt }}
+                    {{ eintrag.Summe_O11 }}
+                    {{ eintrag.Summe_P11 }}
+                    {{ eintrag.Summe_Q11 }}
+                    {{ eintrag.Summe_R11 }}
+                    {{ eintrag.Summe_S11 }}
+                    {{ eintrag.Summe_T11 }}
+                    {{ eintrag.Summe_U11 }}
+                </td>
+                    {% if forloop.counter|divisibleby:"8" %}
+                        </tr><tr>
+                    {% endif %}
                 {% endfor %}
-            </tdoby>
-        </table>       
+                </tr>
+            </tbody>
+        </table>
+    </div>  
     </body>
 </html>
