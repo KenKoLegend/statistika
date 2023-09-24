@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import UploadedFile
 import pandas as pd
+from django.http import HttpResponse
 
 def upload_file(request):
     if request.method == 'POST':
@@ -17,15 +18,15 @@ def upload_file(request):
 def process_file(request):
     uploaded_file = UploadedFile.objects.latest('id')
     file_path = uploaded_file.file.path
-    df = pd.read_excel(file_path)
+    df = pd.read_excel(file_path, sheet_name=None)
     
-    cell_value1 = df.iloc[0, 0]
-    cell_value2 = df.iloc[0, 1]
+    sum = []
     
-    context = {
-        "cell_value1": cell_value1,
-        "cell_value2": cell_value2,
-    }
-    
-    return render(request, 'process_file.html', context)
-    
+    for sheet_name, sheet_data in df.items():
+        try:
+            wert_o11 = sheet_data.iloc[9, 14]
+            sum.append({'Arbeitsblatt': sheet_name, 'Summe_O11': wert_o11})
+        except KeyError:
+            sum.append({'Arbeitsblatt': sheet_name, 'Summe_O11': 0})
+    return render(request, 'process_file.html', {'sum': sum})
+        

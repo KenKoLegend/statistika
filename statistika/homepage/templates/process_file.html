@@ -11,10 +11,21 @@
     </head>
     <body>
         <h1>Zellen aus Google Sheets</h1>
-
-       
-            <p>Die Gesamtanzahl der Meeting-Gäste beträgt: {{ cell_value1 }}</p>
-            <p>Die Gesamtanzahl der Meeting-Gäste beträgt: {{ cell_value2 }}</p>
-        
+        <table>
+            <thead>
+                <tr>
+                    <th>Arbeitsblatt</th>
+                    <th>Summe für 011</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eintrag in sum %}
+                <tr>
+                    <td>{{ eintrag.Arbeitsblatt }}</td>
+                    <td>{{ eintrag.Summe_O11 }}</td>
+                </tr>
+                {% endfor %}
+            </tdoby>
+        </table>       
     </body>
 </html>
