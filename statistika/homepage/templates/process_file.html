@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Daten</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "style.css" %}">
+    </head>
+    <body>
+        <h1>Zellen aus Google Sheets</h1>
+
+       
+            <p>Die Gesamtanzahl der Meeting-Gäste beträgt: {{ cell_value1 }}</p>
+            <p>Die Gesamtanzahl der Meeting-Gäste beträgt: {{ cell_value2 }}</p>
+        
+    </body>
+</html>
