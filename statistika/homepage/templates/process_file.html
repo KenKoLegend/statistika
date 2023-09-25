@@ -1,16 +1,7 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Daten</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "style.css" %}">
-    </head>
-    <body>
-        <div class="container">
+{% block page_content %}
+       <div class="container">
         <h1>Handover Statistiken BER0001</h1>
         <table>
             <thead>
@@ -45,6 +36,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>  
-    </body>
-</html>
+    </div>
+{% endblock page_content %}

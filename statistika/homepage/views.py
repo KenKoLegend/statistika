@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import UploadedFile
 import pandas as pd
-from django.http import HttpResponse
+
+def index(request):
+    return render(request, 'index.html')
+
+
 
 def upload_file(request):
     if request.method == 'POST':
