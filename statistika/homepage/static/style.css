@@ -68,7 +68,7 @@ input {
 .container-lg {
     display: flex;
     justify-content: center;
-    margin-top: 15%;
+    margin-top: 1%;
     background-color: rgba(70, 70, 70, 0.2);
     border-radius: 2px solid;
     padding-top: 20px;
@@ -80,4 +80,21 @@ input {
     padding-bottom: 20px;
     padding-top: 20px;
     text-align: center;
+}
+
+.container-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: azure;
+    margin-top: 10%;
+}
+
+p {
+    text-align: center;
+}
+
+.btn-primary {
+    margin-bottom: 20px !important;
+    margin-top: 20px !important;
 }

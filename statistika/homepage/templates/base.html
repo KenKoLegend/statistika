@@ -8,6 +8,8 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static "style.css" %}">
+    
+    <!-- Bootstrap / mdb and FA - not DSGVO secured ( I know )-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,12 +28,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
       rel="stylesheet"
     />
+    <!-- End of Bootstrap -->
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Dennis Gärtig</a>
-
+        <!-- Responsive Toggle Button -->
         <button
           class="navbar-toggler"
           type="button"
@@ -43,19 +46,26 @@
         >
           <i class="fas fa-bars"></i>
         </button>
+        <!-- Responsive Toggle Button end -->
+        <!-- Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Hauptseite</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/upload">Statistika</a>
+              <a class="nav-link" href="/process">Statistika</a>
             </li>
         </div>
       </div>
     </nav>
+        <!-- Navbar end -->
+    <!-- Template Tag for Page Content -->
     {% block page_content %} {% endblock page_content %}
+    <!-- Template Tag end -->
+    <!-- MDB and Bootstrap JS -->
     <script
+    
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"
     ></script>
@@ -64,5 +74,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <!-- MDB and Bootstrap JS end -->
   </body>
 </html>

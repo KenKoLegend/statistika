@@ -1,6 +1,13 @@
 
 {% extends "base.html" %} {% load static %} {% block page_content %}
-        <div class="container-lg">
+        
+<div class="container-1">
+    <h2>Lade dein Handover hoch</h2>
+    <p>Egal ob Mar'23 oder Dec'24, du hast hier die Möglichkeit mit einem Klick, 4 Weekly Reports und 1 Monthly Report zu erstellen.</p>
+    <h4>Die Datei wird automatisch nach 10 Minuten gelöscht.<h4>
+</div>
+<!-- Upload Form for File -->
+<div class="container-lg">
             <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file"  name="file">
@@ -8,4 +15,5 @@
             <button type="submit" class="btn btn-light">Datei hochladen</button>
             </div>
         </div>
+<!-- Upload Form end -->
 {% endblock %}

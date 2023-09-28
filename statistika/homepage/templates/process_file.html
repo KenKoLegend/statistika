@@ -2,10 +2,18 @@
 {% load static %}
 {% block page_content %}
        <div class="container">
-        <h1>Handover Statistiken BER0001</h1>
+        <h1>Handover Reportings BER0001</h1>
+        <!-- Collapse Button -->
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Handover Daily Statistics anzeigen
+          </button>
+        <!-- Collapse Button end -->
+          <div class="collapse">
+            <div class="card card-body">
         <table>
             <thead>
                 <tr>
+                    <!-- Header of Table -->
                     <th>Tag</th>
                     <th>Meeting</th>
                     <th>Interview</th>
@@ -14,27 +22,46 @@
                     <th>Vendor</th>
                     <th>Press</th>
                     <th>VIP</th>
+                    <!-- Header of Table end -->
                 </tr>
             </thead>
             <tbody>
-                <tr>                        
+                <tr>
+                <!-- Acutual Data for Table -->                        
                 {% for eintrag in sum %}   
-                <td>
-                    {{ eintrag.Arbeitsblatt }}
-                    {{ eintrag.Summe_O11 }}
-                    {{ eintrag.Summe_P11 }}
-                    {{ eintrag.Summe_Q11 }}
-                    {{ eintrag.Summe_R11 }}
-                    {{ eintrag.Summe_S11 }}
-                    {{ eintrag.Summe_T11 }}
-                    {{ eintrag.Summe_U11 }}
-                </td>
+                    <td>
+                        {{ eintrag.Arbeitsblatt }}
+                        {{ eintrag.Summe_O11 }}
+                        {{ eintrag.Summe_P11 }}
+                        {{ eintrag.Summe_Q11 }}
+                        {{ eintrag.Summe_R11 }}
+                        {{ eintrag.Summe_S11 }}
+                        {{ eintrag.Summe_T11 }}
+                        {{ eintrag.Summe_U11 }}
+                    </td>
+                <!-- Date for Table end -->
+                <!-- Creating new Table after Index 8 -->
                     {% if forloop.counter|divisibleby:"8" %}
                         </tr><tr>
                     {% endif %}
+                <!-- Creating new Table after Index 8 end -->
                 {% endfor %}
                 </tr>
+                <tr> 
+                <!-- Creating Total Data with Template Tags -->
+                    <td>Total</td>
+                    <td>{{ meeting }}</td>
+                    <td>{{ interview }}</td>
+                    <td>{{ event }}</td>
+                    <td>{{ social }}</td>
+                    <td>{{ vendor }}</td>
+                    <td>{{ press }}</td>
+                    <td>{{ vip }}</td>
+                <!-- Creating Total Data with Template Tags end -->
+                </tr>               
             </tbody>
         </table>
+    </div>
+</div>
     </div>
 {% endblock page_content %}
