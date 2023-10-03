@@ -3,6 +3,7 @@ import pandas as pd
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
+from django.http import JsonResponse
 
 # Defining Homepage and return index.html
 def index(request):
@@ -13,7 +14,7 @@ def upload_file(request):
     if request.method == 'POST' and request.FILES['file']: 
         try:
             uploaded_file = request.FILES['file'] # defines the file
-            fs = FileSystemStorage() # defubes tge FileSystemStorage
+            fs = FileSystemStorage() # defines the FileSystemStorage
             filename = fs.save(uploaded_file.name, uploaded_file) # saves file in FileSystemStorage
 
             request.session['uploaded_file'] = fs.url(filename) # defines Session name
@@ -42,6 +43,13 @@ def delete_file(request):
 
     return redirect('process_file') # returns process_file.html
 
+
+def extend_session(request):
+    # Extend the session's expiration time
+    request.session.set_expiry(3600)  # Set session expiration time to 1 hour (adjust as needed)
+    
+    return JsonResponse({'status': 'Session extended'})
+
 def process_file(request):
     
     uploaded_file = UploadedFile.objects.latest('id') # gets latest object id
@@ -56,6 +64,8 @@ def process_file(request):
     vendor = 0 # declares to for loop as integer
     press = 0 # declares to for loop as integer
     vip = 0 # declares to for loop as integer
+    
+    
     
     for sheet_name, sheet_data in df.items(): # starting for loop to geht located excel cells with pandas
         try:
@@ -97,7 +107,11 @@ def process_file(request):
                         'Summe_T11': 0,
                         'Summe_U11': 0})
 
-        
+        chart_data = {
+                'labels': ['Meeting', 'Interview', 'Event', 'Social', 'Vendor', 'Press', 'VIP'],
+                'values': [meeting, interview, event, social, vendor, press, vip]
+            }
+                
     return render(request, 'process_file.html', {'sum': sum, # creating template tags
                                                  'meeting': meeting,
                                                  'interview': interview,
@@ -106,5 +120,6 @@ def process_file(request):
                                                  'vendor': vendor,
                                                  'press': press,
                                                  'vip': vip,
+                                                 'chart_data': chart_data,
                                                 })
         
