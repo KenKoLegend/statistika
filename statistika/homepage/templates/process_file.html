@@ -55,39 +55,13 @@
                             <td>{{ vendor }}</td>
                             <td>{{ press }}</td>
                             <td>{{ vip }}</td>
-                        <!-- Creating Total Data with Template Tags end -->
-                            
-                        </tr>    
-                                   
-                    </tbody>
-                    
+                        <!-- Creating Total Data with Template Tags end -->                     
+                        </tr>                                
+                    </tbody>                   
                 </table>
+                <!-- Chart.js Data -->
                 <div class="container-2">
                     <canvas id="chart"></canvas>
-                    </div>
+                </div>
 </div>
-<script>
-let ctx = document.getElementById("chart").getContext("2d");
-var chartData = {{ chart_data|safe }};
-let chart = new Chart(ctx, {
-  type: "bar",
-  data: {
-     labels: chartData.labels,
-     datasets: [
-        {
-          label: "Total Guests per Month",
-          backgroundColor: "#79AEC8",
-          borderColor: "#417690",
-          data: chartData.values
-        }
-     ]
-  },
-  options: {
-     title: {
-        text: "Total per Month",
-        display: true
-     }
-  }
-});
-</script>
 {% endblock page_content %}
